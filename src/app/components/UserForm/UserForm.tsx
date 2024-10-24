@@ -33,7 +33,7 @@ const UserForm: React.FC<UserFormProps> = (props) => {
 
   const onSubmit: React.FormEventHandler = (e) => {
     e.preventDefault();
-    if (user) {
+    if (user.name && user.email) {
       setError(null);
       addUser(user);
       createUser(user)
@@ -77,7 +77,9 @@ const UserForm: React.FC<UserFormProps> = (props) => {
         />
       </div>
       <div className="mt-4 flex items-center justify-end w-full">
-        <button type="submit">Create User</button>
+        <button type="submit" disabled={!user.name || !user.email}>
+          Create User
+        </button>
       </div>
       {error && <p className="red-500 text-sm">{error.message}</p>}
     </form>
