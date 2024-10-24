@@ -1,0 +1,1 @@
+export { adoptError } from "./adoptError";
